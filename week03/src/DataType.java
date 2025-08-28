@@ -1,5 +1,6 @@
 public class DataType {
     public static void main(String[] args) {
+        // 충돌해결하는법
          //데이터 없는 뭐라썼지 안보이 asdfasdf
         int score =87;
         float gpa = 4.13F;
