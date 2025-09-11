@@ -1,27 +1,30 @@
 import java.util.Scanner;
 
-public class PrimeGame {
-    public static boolean isPrime(int n){
-
+public class PrimeGame_2 {
+    public static boolean isPrime(int n) {
+        if (n <= 1) {
+            return false;
+        } else {
+            for (int i = 2; i <= Math.sqrt(n); i = i + 1) {
+                if (n % i == 0) {
+                    return false;
+                }
+            }
+        }
         return true;
     }
-    static void main(String[] args){
+
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int counter = 0;
-        int number = sc. nextInt();
-        for(int i=2; i<=Math.sqrt(number);i=i+1){
-            if(number % i == 0){
-                counter++;
-                break;
-            }
-            //System.out.print(i+" ");
-        }
-        if(counter == 0){
+        int number = sc.nextInt();
+
+
+        if (isPrime(number)) {
             System.out.println(number + " is prime number");
-        }else{
+        } else {
             System.out.println(number + " is not prime number");
         }
 
 
-
-}}
+    }
+}
