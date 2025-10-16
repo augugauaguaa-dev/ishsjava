@@ -1,6 +1,6 @@
 public class Pikachu extends Pokemon {
-    public Pikachu(int hp){
-        super("피카츄", hp);
+    public Pikachu(int hp, int attackPower){
+        super("피카츄", hp, attackPower);
         System.out.println("피카피카~");
     }
 
