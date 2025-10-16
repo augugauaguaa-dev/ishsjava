@@ -5,9 +5,11 @@ public class GameDemo {
         Squirtle enemysquirtle = new Squirtle(120, 21);
         System.out.println("Game Start~");
         mypikachu.attack(enemysquirtle);
-        enemysquirtle.attack(mypikachu);
 
-        System.out.println(mypikachu);
+        for (int i=0; i<5; i++)
+            enemysquirtle.attack(mypikachu);
+
         System.out.println(enemysquirtle);
+        System.out.println(mypikachu);
     }
 }
