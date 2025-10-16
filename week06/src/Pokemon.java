@@ -15,6 +15,12 @@ public abstract class Pokemon {
     public int getHp(){
         return hp;
     }
+    public int getAttackPower() {
+        return attackPower;
+    }
+    public void setHp(int hp) {
+        this.hp = hp;
+    }
 
     public abstract void attack(Pokemon target);
 
