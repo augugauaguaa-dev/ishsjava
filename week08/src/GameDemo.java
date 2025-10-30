@@ -8,29 +8,32 @@ public class GameDemo {
 
         Pokemon playerPokemon = null;
         Scanner scanner = new Scanner(System.in);
-        try {
+
             while (true) {
-                System.out.print("플레이어 포켓몬스터 선택 \n 1) 피카츄 2) 꼬부기 3) 리자몽 : ");
-                int number = scanner.nextInt(); // string
-                if (number == 1) {
-                    playerPokemon = new Pikachu(100, 27, new NoFly());
-                    break;
-                } else if (number == 2) {
-                    playerPokemon = new Squirtle(120, 21, new NoFly());
-                    break;
-                } else if (number == 3) {
-                    playerPokemon = new Charizard(200, 40, new Wings());
-                    break;
-                } else
-                    System.out.println("메뉴에 있는 숫자를 골라주세요");
+                try {
+                    System.out.print("플레이어 포켓몬스터 선택 \n 1) 피카츄 2) 꼬부기 3) 리자몽 : ");
+                    int number = scanner.nextInt(); // string
+                    if (number == 1) {
+                        playerPokemon = new Pikachu(100, 27, new NoFly());
+                        break;
+                    } else if (number == 2) {
+                        playerPokemon = new Squirtle(120, 21, new NoFly());
+                        break;
+                    } else if (number == 3) {
+                        playerPokemon = new Charizard(200, 40, new Wings());
+                        break;
+                    } else
+                        System.out.println("메뉴에 있는 숫자를 골라주세요");
+
+                } catch (InputMismatchException err) {
+                    System.out.println("숫자로 입력하세요. 메뉴에서 고르세요.");
+                    System.out.println(err.getMessage());
+                    scanner.nextLine();
+                }
             }
-        }catch (InputMismatchException err){
-            System.out.println("숫자로 입력하세요. 메뉴에서 고르세요.");
-            System.out.println(err.getMessage());
-        }
 
         int randomNumber = (int)(Math.random() * 3);
-        Pokemon enemyPokemon = null;
+        Pokemon enemyPokemon;
         System.out.println("야생의 포켓몬스터가 나타났습니다");
         if (randomNumber == 0)
             enemyPokemon = new Pikachu(100, 27, new NoFly());
