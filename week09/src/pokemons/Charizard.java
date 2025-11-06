@@ -3,8 +3,8 @@ package pokemons;
 import fly.Wings;
 
 public class Charizard extends Pokemon {
-    public Charizard(int hp, int attackPower, Wings wings){
-        super("리자몽", hp, attackPower, wings);
+    public Charizard(int hp, int attackPower, Wings wings, Skill[] skills){
+        super("리자몽", hp, attackPower, wings, skills);
         System.out.println("자몽자몽~");
     }
 

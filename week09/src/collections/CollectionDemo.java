@@ -6,12 +6,10 @@ import java.util.ArrayList;
 public class CollectionDemo {
     public static void main(String[] args) {
         ArrayList<Fruit> fruits = new ArrayList<>();
-        System.out.println(fruits.isEmpty());
+//        System.out.println(fruits.isEmpty());
 
         fruits.add(new Fruit("Kiwi", 3000));
         fruits.add(new Fruit("Strawberry", 2500));
-
-
 
 //        Fruit[] fruits = {
 //                new Fruit("Kiwi", 3000),
