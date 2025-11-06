@@ -64,45 +64,20 @@ public class GameDemo {
         System.out.println("배틀 시작!");
         System.out.println("===============");
 
+        while (true){
+            for(int i=0; i<playerPokemon.skills.length; i++){
+                System.out.println((i+1) + ". " + playerPokemon.skills[i].getName() + " (" + playerPokemon.skills[i].getDamage() + ")");
+            }
 
-        for(int i=0; i<playerPokemon.skills.length; i++){
-            System.out.println((i+1) + ". " + playerPokemon.skills[i].getName() + " (" + playerPokemon.skills[i].getDamage() + ")");
+            System.out.print("Select skill : ");
+            int skillNumber = scanner.nextInt() - 1;
+
+            playerPokemon.attack(enemyPokemon, skillNumber);
+
+            if(enemyPokemon.isFained() || playerPokemon.isFained()){
+                break;
+            }
         }
-
-        System.out.print("Select skill : ");
-        int skillNumber = scanner.nextInt() - 1;
-
-        enemyPokemon.setHp(enemyPokemon.getHp()-playerPokemon.skills[skillNumber].getDamage());
-        System.out.print(enemyPokemon.getName() + "의 체력이" + enemyPokemon.getHp() + "남았습니다");
-
-//        int turn = 1;
-//        while (!p1.isFained() && !c1.isFained()){
-//            System.out.println("턴 " + turn + " 시작.");
-//            p1.attack(c1);
-//
-//            if(c1.isFained()){
-//                System.out.println(c1.getName() + "이(가) 기절했습니다! " + p1.getName() + " 승리!");
-//            }
-//
-//            c1.attack(p1);
-//
-//            if(p1.isFained()){
-//                System.out.println(p1.getName() + "이(가) 기절했습니다! " + c1.getName() + " 승리!");
-//            }
-//
-//            turn++;
-//        }
-
-//        pokemons.Pikachu mypikachu = new pokemons.Pikachu(100, 27);
-//        pokemons.Pikachu yourpikachu = new pokemons.Pikachu(100, 28);
-//        pokemons.Squirtle enemysquirtle = new pokemons.Squirtle(120, 21);
-//        System.out.println("Game Start~");
-//        mypikachu.attack(enemysquirtle);
-//
-//        for (int i=0; i<5; i++)
-//            enemysquirtle.attack(mypikachu);
-//
-//        System.out.println(enemysquirtle);
-//        System.out.println(mypikachu);
+        System.out.println("배틀 종료");
     }
 }
