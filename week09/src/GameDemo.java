@@ -73,10 +73,11 @@ public class GameDemo {
             int skillNumber = scanner.nextInt() - 1;
 
             playerPokemon.attack(enemyPokemon, skillNumber);
+            enemyPokemon.attack(playerPokemon, (int)(Math.random() * 3));
 
-            if(enemyPokemon.isFained() || playerPokemon.isFained()){
+            if(enemyPokemon.isFained() || playerPokemon.isFained())
                 break;
-            }
+
         }
         System.out.println("배틀 종료");
     }
