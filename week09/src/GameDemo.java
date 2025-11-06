@@ -2,28 +2,26 @@ import fly.NoFly;
 import fly.Wings;
 import pokemons.*;
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class GameDemo {
     public static void main(String[] args) {
-        Skill[] pikachuSkills = {
-                new Skill("Nuzzle", 20),
-                new Skill("ThunderShock", 40),
-                new Skill("Quick Attack", 40)
-        };
+        ArrayList<Skill> pikachuSkills = new ArrayList<>();
+        pikachuSkills.add(new Skill("볼부비부비", 20));
+        pikachuSkills.add(new Skill("전기쇼크", 40));
+        pikachuSkills.add(new Skill("전광석화", 40));
 
-        Skill[] squirtleSkills = {
-                new Skill("Tackle",40),
-                new Skill("Water Gun",40),
-                new Skill("Rapid Spin",50)
-        };
+        ArrayList<Skill> squirtleSkills = new ArrayList<>();
+        squirtleSkills.add(new Skill("몸통 박치기",40));
+        squirtleSkills.add(new Skill("물대포",40));
+        squirtleSkills.add(new Skill("고속스핀",50));
 
-        Skill[] charizardSkills = {
-                new Skill("Scratch",40),
-                new Skill("Dragon Breath",60),
-                new Skill("Flare Blitz",120)
-        };
+        ArrayList<Skill> charizardSkills = new ArrayList<>();
+        charizardSkills.add(new Skill("할퀴기",40));
+        charizardSkills.add(new Skill("용의 숨결",60));
+        charizardSkills.add(new Skill("플레어드라이브",120));
 
         Pokemon playerPokemon = null;
         Scanner scanner = new Scanner(System.in);
@@ -51,34 +49,47 @@ public class GameDemo {
                 }
             }
 
-        int randomNumber = (int)(Math.random() * 3);
-        Pokemon enemyPokemon = null;
-        System.out.println("야생의 포켓몬스터가 나타났습니다");
-        if (randomNumber == 0)
-            enemyPokemon = new Pikachu(100, 27, new NoFly(), pikachuSkills);
-        else if (randomNumber == 1)
-            enemyPokemon = new Squirtle(120, 21,new NoFly(), squirtleSkills);
-        else if (randomNumber == 2)
-            enemyPokemon = new Charizard(200, 40, new Wings(), charizardSkills);
+        while(true){
+            int randomNumber = (int)(Math.random() * 3);
+            Pokemon enemyPokemon = null;
+            System.out.println("야생의 포켓몬스터가 나타났습니다");
+            if (randomNumber == 0)
+                enemyPokemon = new Pikachu(100, 27, new NoFly(), pikachuSkills);
+            else if (randomNumber == 1)
+                enemyPokemon = new Squirtle(120, 21,new NoFly(), squirtleSkills);
+            else if (randomNumber == 2)
+                enemyPokemon = new Charizard(200, 40, new Wings(), charizardSkills);
 
-        System.out.println("배틀 시작!");
-        System.out.println("===============");
+            System.out.println("메뉴를 골라주세요 \n1) 전투 2) 도망 3) 종료 :");
+            int number = scanner.nextInt();
+            if (number==1){
+                System.out.println("배틀 시작!");
+                System.out.println("===============");
 
-        while (true){
-            for(int i=0; i<playerPokemon.skills.length; i++){
-                System.out.println((i+1) + ". " + playerPokemon.skills[i].getName() + " (" + playerPokemon.skills[i].getDamage() + ")");
-            }
+                charizardSkills.add(new Skill("Inferno", 100));
+                while (true){
+                    for(int i=0; i<playerPokemon.skills.size(); i++){
+                        System.out.println((i+1) + ". " + playerPokemon.skills.get(i).getName() + " (" + playerPokemon.skills.get(i).getDamage() + ")");
+                    }
 
-            System.out.print("Select skill : ");
-            int skillNumber = scanner.nextInt() - 1;
+                    System.out.print("Select skill : ");
+                    int skillNumber = scanner.nextInt() - 1;
 
-            playerPokemon.attack(enemyPokemon, skillNumber);
-            enemyPokemon.attack(playerPokemon, (int)(Math.random() * 3));
+                    playerPokemon.attack(enemyPokemon, skillNumber);
+                    enemyPokemon.attack(playerPokemon, (int)(Math.random() * 3));
 
-            if(enemyPokemon.isFained() || playerPokemon.isFained())
+                    if(enemyPokemon.isFained() || playerPokemon.isFained())
+                        break;
+
+                }
+                System.out.println("배틀 종료");
+            }else if(number==2){
+                playerPokemon.performFlyable();
+            }else if(number==3){
+                System.out.println("배틀 종료");
                 break;
-
+            }else
+                System.out.println("메뉴에 있는 숫자를 골라주세요");
         }
-        System.out.println("배틀 종료");
     }
 }
