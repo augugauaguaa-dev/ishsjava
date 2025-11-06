@@ -60,7 +60,7 @@ public class GameDemo {
             else if (randomNumber == 2)
                 enemyPokemon = new Charizard(200, 40, new Wings(), charizardSkills);
 
-            System.out.println("메뉴를 골라주세요 \n1) 전투 2) 도망 3) 종료 :");
+            System.out.print("메뉴를 골라주세요 \n1) 전투 2) 도망 3) 종료 : ");
             int number = scanner.nextInt();
             if (number==1){
                 System.out.println("배틀 시작!");
