@@ -65,7 +65,6 @@ public class GameDemo {
             if (number==1){
                 System.out.println("배틀 시작!");
                 System.out.println("===============");
-
                 charizardSkills.add(new Skill("Inferno", 100));
                 while (true){
                     for(int i=0; i<playerPokemon.skills.size(); i++){
@@ -83,6 +82,7 @@ public class GameDemo {
 
                 }
                 System.out.println("배틀 종료");
+                break;
             }else if(number==2){
                 playerPokemon.performFlyable();
             }else if(number==3){
